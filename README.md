@@ -42,17 +42,19 @@ Reviews and applies pending updates to the orchestrator's config. Runs before/af
 
 ## Installation
 
-```bash
-# Clone to your preferred location
-git clone https://github.com/SeanSmithDesign/claude-skills.git ~/Code/claude-skills
+Clone the repo anywhere, then symlink the skills you want into `~/.claude/skills/`:
 
-# Symlink individual skills into Claude Code's skills directory
+```bash
+git clone https://github.com/SeanSmithDesign/claude-skills.git /path/to/claude-skills
+
 mkdir -p ~/.claude/skills
-ln -s ~/Code/claude-skills/wrap ~/.claude/skills/wrap
-ln -s ~/Code/claude-skills/wrap-continue ~/.claude/skills/wrap-continue
-ln -s ~/Code/claude-skills/orchestrator-scaffold ~/.claude/skills/orchestrator-scaffold
-ln -s ~/Code/claude-skills/orchestrator-update ~/.claude/skills/orchestrator-update
+ln -s /path/to/claude-skills/wrap ~/.claude/skills/wrap
+ln -s /path/to/claude-skills/wrap-continue ~/.claude/skills/wrap-continue
+ln -s /path/to/claude-skills/orchestrator-scaffold ~/.claude/skills/orchestrator-scaffold
+ln -s /path/to/claude-skills/orchestrator-update ~/.claude/skills/orchestrator-update
 ```
+
+Replace `/path/to/claude-skills` with wherever you cloned the repo (e.g. `~/claude-skills`, `~/projects/claude-skills`, etc.).
 
 ## Context
 
