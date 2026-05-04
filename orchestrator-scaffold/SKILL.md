@@ -2,7 +2,7 @@
 name: orchestrator-scaffold
 description: Scaffold missing project files via three modes. Use when the user says "/orchestrator:scaffold", "scaffold this project", "set up agent files", "create grounding files", "add mission brand principles", or when Phase 1 boot check surfaces missing scaffolding. Three modes — default (auto-detect), lifecycle (v2.1 agent files), grounding (v2.2 mission/brand/principles interview).
 allowed-tools: Read, Write, Edit, Bash, Glob, Agent, Skill
-version: 1.0
+version: 0.3.0
 ---
 
 # /orchestrator:scaffold — Project Scaffolding

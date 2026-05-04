@@ -2,6 +2,7 @@
 name: orchestrator-update
 description: Review and apply pending orchestrator config updates. Use when the user says "/orchestrator:update", "check pending updates", or on session start if the registry has pending entries. Surfaces improvements from `~/.claude/PENDING-UPDATES.md`, applies selected ones via subagents, and validates with the eval suite.
 allowed-tools: Read, Write, Edit, Bash, Glob, Agent, Skill
+version: 0.2.0
 ---
 
 # /orchestrator:update

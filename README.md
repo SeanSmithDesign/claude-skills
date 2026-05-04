@@ -2,6 +2,12 @@
 
 A collection of Claude Code skills for managing AI-assisted development workflows.
 
+## Status
+
+These skills are **early work-in-progress** — actively iterated on, currently used by one person, and not battle-tested across diverse setups. Versions are intentionally pre-1.0.
+
+If you try them: expect rough edges, expect things to change, and review what each skill does before invoking — they run shell commands, modify your `~/.claude` setup, and interact with git. **No warranty. Use at your own risk.**
+
 ## What's here
 
 Skills are loaded by Claude Code from `~/.claude/skills/`. Each skill is a directory containing a `SKILL.md` file that Claude reads when you invoke the corresponding slash command.
