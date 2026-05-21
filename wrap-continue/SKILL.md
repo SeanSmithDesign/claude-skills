@@ -3,7 +3,7 @@ name: wrap-continue
 description: Mid-task context reset — light capture, smart push, hot-resume pickup prompt rendered inline. Use when recycling a long-lived thread to free context while continuing the same work. NOT for end-of-day wrap — use /wrap for that.
 license: MIT
 metadata:
-  version: 0.4.0
+  version: 0.5.0
   category: workflow
   domain: session-management
   status: stable
@@ -49,7 +49,7 @@ Save feedback, corrections, or decisions that surfaced this session and aren't y
 
 - New feedback → save to `.claude/projects/<path>/memory/feedback_*.md`
 - New reference → save to `reference_*.md`
-- Major architectural decision → update `ORCHESTRATOR.md` In-Flight Work section (orchestrator threads only)
+- Major architectural decision, project state change, or in-flight work update → update `ORCHESTRATOR.md` Decision Log and In-Flight Work sections. This applies to ANY thread in a project that has an `ORCHESTRATOR.md` — not just orchestrator threads. Implementation threads change state too (CVs generated, roles applied, conventions locked) and that state must be written back before context clears.
 
 Skip if nothing non-obvious came up. Don't run full retrospective — that's `/wrap`.
 
@@ -133,7 +133,7 @@ Working directory: ~/Code/[project]
 - **Nothing to push?** Skip push silently. Still commit if anything was uncommitted.
 - **Upstream remote detected?** Skip push with the one-line note. Don't ask.
 - **Big mid-session correction?** Save it as feedback before clearing — future threads will thank you.
-- **Orchestrator thread?** Update `ORCHESTRATOR.md` In-Flight Work if the next subagent wave is already planned.
+- **Project has ORCHESTRATOR.md?** Update it — even if this is an implementation thread, not the orchestrator. Any state that changed this session (decisions, conventions, role status, files created) goes in Decision Log or In-Flight Work before context clears.
 - **User seems in a hurry?** Commit + push (if applicable) + pickup prompt only. Skip capture.
 - Keep the whole flow under 5 exchanges. This is speed work, not ceremony.
 

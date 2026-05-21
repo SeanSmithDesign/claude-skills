@@ -3,7 +3,7 @@ name: wrap
 description: End-of-session wrap-up — heavy capture, retrospective only. Use when done for the day (or longer). Runs reconciliation, commits, Linear, memories, orchestrator state, session notes, Second Brain. No pickup prompt — use /wrap-continue for that.
 license: MIT
 metadata:
-  version: 0.5.0
+  version: 0.6.0
   category: workflow
   domain: session-management
   status: stable
@@ -71,22 +71,27 @@ Save feedback, decisions, or references that future sessions should know about. 
 
 Done before session notes so notes can reference saved memory files. Skip if nothing non-obvious was learned.
 
-### 5. Orchestrator State (orchestrator threads — mandatory if any delegation or decision happened)
+### 5. Orchestrator State (any thread in a project that has an ORCHESTRATOR.md)
 
-Update `ORCHESTRATOR.md` in `.claude/projects/<path>/memory/` with architecture changes, decisions, fragile areas, recent delegations. Keep under 300 lines. Prune stale Decision Log and Recent Delegations entries.
+First, check whether `.claude/projects/<path>/memory/ORCHESTRATOR.md` exists for the current project. If it does, this step applies — regardless of whether this thread is the orchestrator or an implementation thread.
+
+Update `ORCHESTRATOR.md` with architecture changes, decisions, fragile areas, recent delegations, and any in-flight work added or completed. Keep under 300 lines. Prune stale Decision Log and Recent Delegations entries.
 
 If step 1 deferred any gaps as follow-up tasks, record them in **In-Flight Work** here.
 
-**This update is mandatory if ANY of the following are true:**
+**This update is mandatory if the project has an ORCHESTRATOR.md AND ANY of the following are true:**
 
 - Any subagent was delegated this session (whether it succeeded or failed)
 - Any architectural decision was made
 - Any in-flight work was added or completed
 - Step 1 deferred any gaps (they must land in ORCHESTRATOR.md)
 - The session produced commits (code shipped that should be reflected in context)
+- Project state changed in a way the orchestrator would need to know (role status, interview outcome, file locations, new conventions)
 
-Skip ONLY if not an orchestrator thread, AND no subagents were delegated, AND no decisions were made, AND no in-flight work changed.
+Skip ONLY if the project has no ORCHESTRATOR.md, AND no subagents were delegated, AND no decisions were made, AND no in-flight work changed.
 
+> **Gotcha:** Implementation threads (non-orchestrator) often change project state — a CV generated, a role applied, a convention locked. These changes are exactly what goes stale if not written back. Don't skip just because you're not the orchestrator thread.
+>
 > **Gotcha:** A session that ends cleanly after shipping a milestone still needs ORCHESTRATOR.md updated — clean endings are not an excuse to skip. The skip is only valid for pure-research or pure-chat sessions where nothing changed.
 
 ### 6. Session Notes (L2 — if meaningful work happened)
